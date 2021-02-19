@@ -82,6 +82,58 @@
 			oracle  中大型企业 
 			sqlserver 微软
 
+3.访问网站的过程
+	a.浏览器输入www.sina.com.cn
+	b.系统会到系统中的hosts文件中搜索是否有www.sina.com.cn对应的IP地址，如果有直接通过IP访问
+	c.如果没有，数据通过网络传输到DNS服务器(域名解析服务器)进行域名解析(域名--IP)。
+	d.数据通过网络传输到目标IP地址的web服务器，web服务器解析请求，发送请求给数据库
+	e.数据库响应web服务器请求，web服务器整合资源后发回到浏览器中
 
+4.URL(统一资源定位器)
+	http://sports.sina.com.cn:80/match/stats?mid=8d
+	a.协议    	http://
+		一组规则规范
+		a1>http协议
+			规定了数据在传输中先传输什么，后传输什么，怎样传输
+		a2>http协议的请求
+			get  请求的信息显示在URL上，相对不安全。主要用于浏览
+				https://s.taobao.com/search?q=lv
+				https://s.taobao.com/search?q=zara
+			post 请求的信息显示在请求体上，相对安全，主要用于提交
+		a3>http协议特点
+			无状态(彼此不记录过去的行为)
+		a4>cookie&session
+			cookie  访问记录、验证信息  定投广告
+			session 会话保持  30分钟超时
+		a5>状态码
+			200   2开头请求成功
+			302   3开头移动或者缓存(重定向)
+			404   4开头客户端请求有问题
+			500   5开头服务端有问题
+	b.域名/IP 	sports.sina.com.cn
+		域名(FQDN)
+		DNS(域名解析服务器)
+		b1>正向解析(域名--IP)
+			11>ping
+				win+r--cmd--ping www.baidu.com
+			12>nslookup
+				win+r--cmd--nslookup www.baidu.com
+		b2>反向解析(IP--域名)
+			win+r--cmd--nslookup 14.215.177.38
+	c.端口      :80
+		区分应用层进程的标识
+		常见端口
+			oracle    1521
+			mysql     3306
+			apache/iis/nginx   80
+			tomcat             8080
+		查看系统中开放的端口
+			win+r--cmd--netstat -an
+			win+r--cmd--netstat -an | find "135"
+			|  管道，前面的输出作为后面的输入
+			find 搜索
+			
 
-
+	d.虚拟目录  match
+	e.访问的文件 stats
+	f.访问文件所使用的参数?mid=8d
